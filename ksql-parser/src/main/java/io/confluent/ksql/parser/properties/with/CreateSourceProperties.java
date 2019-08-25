@@ -65,6 +65,10 @@ public final class CreateSourceProperties extends WithClauseProperties {
     validateWindowInfo();
   }
 
+  public Format getKeyFormat() {
+    return Format.valueOf(getString(CommonCreateConfigs.KEY_FORMAT_PROPERTY).toUpperCase());
+  }
+
   public Format getValueFormat() {
     return Format.valueOf(getString(CommonCreateConfigs.VALUE_FORMAT_PROPERTY).toUpperCase());
   }

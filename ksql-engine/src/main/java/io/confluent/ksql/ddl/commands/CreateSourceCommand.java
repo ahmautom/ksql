@@ -130,10 +130,6 @@ abstract class CreateSourceCommand implements DdlCommand {
   }
 
   private static LogicalSchema buildSchema(final TableElements tableElements) {
-    if (Iterables.isEmpty(tableElements)) {
-      throw new KsqlException("The statement does not define any columns.");
-    }
-
     return tableElements.toLogicalSchema();
   }
 

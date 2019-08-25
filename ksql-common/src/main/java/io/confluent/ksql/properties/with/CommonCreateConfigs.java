@@ -37,12 +37,14 @@ public final class CommonCreateConfigs {
 
   // Persistence Props:
   public static final String VALUE_AVRO_SCHEMA_FULL_NAME = "VALUE_AVRO_SCHEMA_FULL_NAME";
+  public static final String KEY_FORMAT_PROPERTY = "KEY_FORMAT";
   public static final String VALUE_FORMAT_PROPERTY = "VALUE_FORMAT";
   public static final String WRAP_SINGLE_VALUE = "WRAP_SINGLE_VALUE";
 
   static void addToConfigDef(
       final ConfigDef configDef,
       final boolean topicNameRequired,
+      final boolean keyFormatRequired,
       final boolean valueFormatRequired
   ) {
     configDef
@@ -73,6 +75,14 @@ public final class CommonCreateConfigs {
                 + "' is set, then the default "
                 + "Kafka cluster configuration for replicas will be used for creating a new "
                 + "topic."
+        )
+        .define(
+            KEY_FORMAT_PROPERTY,
+            ConfigDef.Type.STRING,
+            keyFormatRequired ? ConfigDef.NO_DEFAULT_VALUE : null,
+            ConfigValidators.enumValues(Format.class),
+            Importance.HIGH,
+            "The format of the serialized key"
         )
         .define(
             VALUE_FORMAT_PROPERTY,

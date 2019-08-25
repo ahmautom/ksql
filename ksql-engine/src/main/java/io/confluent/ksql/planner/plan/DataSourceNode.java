@@ -269,7 +269,7 @@ public class DataSourceNode extends PlanNode {
         .stream(dataSource.getKsqlTopic().getKafkaTopicName(), tableConsumed)
 
         // 2. mapValues to add the ROWKEY column
-        .mapValues(mapper)
+//        .mapValues(mapper)
 
         // 3. transformValues to add the ROWTIME column. transformValues is required to access the
         //    streams ProcessorContext which has the timestamp for the record. Also, transformValues
@@ -307,7 +307,7 @@ public class DataSourceNode extends PlanNode {
         .stream(dataSource.getKsqlTopic().getKafkaTopicName(), consumed)
 
         // 2. mapValues to add the ROWKEY column
-        .mapValues(mapper)
+//        .mapValues(mapper)
 
         // 3. transformValues to add the ROWTIME column. transformValues is required to access the
         //    streams ProcessorContext which has the timestamp for the record.

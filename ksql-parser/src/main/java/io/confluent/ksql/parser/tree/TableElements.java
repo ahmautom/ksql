@@ -81,10 +81,6 @@ public final class TableElements implements Iterable<TableElement> {
   }
 
   public LogicalSchema toLogicalSchema() {
-    if (Iterables.isEmpty(this)) {
-      throw new KsqlException("No columns supplied.");
-    }
-
     final Builder builder = LogicalSchema.builder();
 
     for (final TableElement tableElement : this) {
